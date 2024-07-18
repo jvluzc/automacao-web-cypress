@@ -1,25 +1,27 @@
+import userData from '../fixtures/userData.json'
+
 describe('testes-site-HRM-orange', () => {
 
   let selectorList = {
     usernameField: "[name='username']",
     passawordField: "[name='password']",
     loginButton: '.oxd-button',
-    titleTopBar: '.oxd-topbar-header-breadcrumb-module',
+    dashboardGridValidation: ".orangehrm-dashboard-grid",
     messageInvalidCredentials: '.oxd-alert',
   }
 
-  it.skip('login-sucesso', () => {
+  it('login-sucesso', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorList.usernameField).type('Admin')
-    cy.get(selectorList.passawordField).type('admin123')
+    cy.get(selectorList.usernameField).type(userData.userSucess.userName)
+    cy.get(selectorList.passawordField).type(userData.userSucess.password)
     cy.get(selectorList.loginButton).click()
     cy.location ('pathname').should('equal', '/web/index.php/dashboard/index')
-    cy.get(selectorList.titleTopBar).contains ('Dashboard')
+    cy.get(selectorList.dashboardGridValidation)
   })
   it('login-alerta-falha-usuario-senha', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorList.usernameField).type('usuario_falha_teste')
-    cy.get(selectorList.passawordField).type('senha_falha_teste')
+    cy.get(selectorList.usernameField).type(userData.userFail.userName)
+    cy.get(selectorList.passawordField).type(userData.userFail.password)
     cy.get(selectorList.loginButton).click()
     cy.get(selectorList.messageInvalidCredentials)
   })
