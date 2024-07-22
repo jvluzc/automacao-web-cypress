@@ -1,10 +1,10 @@
 class LoginPage {
     selectorList() {
         let selectorsLogin = {
-            usernameField: "[name='username']",
-            passawordField: "[name='password']",
-            loginButton: '.oxd-button',
-            messageInvalidCredentials: '.oxd-alert'
+              usernameField: "[name='username']",
+              passawordField: "[name='password']",
+              loginButton: '.oxd-button',
+              messageInvalidCredentials: '.oxd-alert'
         }
 
         return selectorsLogin
@@ -19,6 +19,11 @@ class LoginPage {
         cy.get(this.selectorList().passawordField).type(password)
         cy.get(this.selectorList().loginButton).click()
     }
+
+    checkInvalidCredentials() {
+        cy.get(this.selectorList().messageInvalidCredentials)
+    }
+
 }
 
 export default LoginPage
