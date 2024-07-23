@@ -4,6 +4,9 @@ import DashboardPage from '../pages/dashboardPage.js'
 import MenuPage from '../pages/menuPage.js'
 import MyInfoPage from '../pages/myInfo.js'
 
+const Chance = require('chance')
+const chance = new Chance()
+
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const menuPage = new MenuPage()
@@ -15,9 +18,12 @@ describe('testes-site-HRM-orange', () => {
   it.only('usuário-alterar-informacoes-sucesso', () => {
     loginPage.accessLoginPage()
     loginPage.loginUser(userData.userSucess.userName, userData.userSucess.password)
+
     dashboardPage.checkDashboardPage()
+
     menuPage.clickMyInfoButton()
-    myInfoPage.fillPersonalDetails('Pauldinei','Jose','Silva')
+    
+    myInfoPage.fillPersonalDetails(chance.first(),'Jose',chance.last)
     myInfoPage.fillEmployeeId('EmployID', 'OtherID', 'DriverLicenceTest', '2025-07-22')
     myInfoPage.fillStatus('1995-12-15')
     myInfoPage.clickSave1()

@@ -1,7 +1,7 @@
 class DashboardPage {
     selectorList() {
         let selectorsDashboard = {
-            dashboardGridValidation: ".orangehrm-dashboard-grid",
+              dashboardGridValidation: ".orangehrm-dashboard-grid",
         }
 
         return selectorsDashboard
