@@ -22,7 +22,7 @@ describe('testes-site-HRM-orange', () => {
     dashboardPage.checkDashboardPage()
 
     menuPage.clickMyInfoButton()
-    
+
     myInfoPage.fillPersonalDetails(chance.first(),'Jose',chance.last)
     myInfoPage.fillEmployeeId('EmployID', 'OtherID', 'DriverLicenceTest', '2025-07-22')
     myInfoPage.fillStatus('1995-12-15')
